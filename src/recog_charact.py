@@ -8,7 +8,6 @@ import matplotlib.pyplot as plt
 
 
 MIN_CONTOUR_AREA = 250
-
 RESIZED_IMAGE_WIDTH = 28
 RESIZED_IMAGE_HEIGHT = 28
 
@@ -97,8 +96,6 @@ def main():
         
         
         img_roi_resize = cv2.resize(img_roi, (RESIZED_IMAGE_WIDTH, RESIZED_IMAGE_HEIGHT))
-        # cv2.imshow("imgROI", img_roi_resize) 
-        # cv2.imwrite(os.path.join(image_path1, str(x) +'.png'),img_roi_resize) 
         image_array = np.array(img_roi_resize).reshape(-1,28,28,1)
         charact_pred = new_cnn_model.predict(image_array)
         if x != 12:
@@ -108,10 +105,10 @@ def main():
     print("Result : \t"+  text_result[:9] + " "+ text_result[9:13]+ " "+ text_result[13:])
        
 
-    cv2.imshow("imgTest", image_test)      # show input image with green boxes drawn around found digits
-    cv2.waitKey(0)                                          # wait for user key press
+    cv2.imshow("imgTest", image_test)     
+    cv2.waitKey(0)                                         
 
-    cv2.destroyAllWindows()             # remove windows from memory
+    cv2.destroyAllWindows()            
 
     return
 
